@@ -1,5 +1,6 @@
 import './App.css'
 import { InquiryForm } from './components/InquiryForm'
+import { PlaceholderFlag } from './components/PlaceholderFlag'
 import { SiteFooter } from './components/SiteFooter'
 import { SiteHeader } from './components/SiteHeader'
 import { TrainingCard } from './components/TrainingCard'
@@ -49,17 +50,21 @@ function App() {
               </ul>
             </div>
 
-            <div className="watchtower-art" aria-hidden="true">
-              <div className="watchtower-art__sun" />
-              <div className="watchtower-art__tower">
-                <span className="watchtower-art__roof" />
-                <span className="watchtower-art__room" />
-                <span className="watchtower-art__leg watchtower-art__leg--left" />
-                <span className="watchtower-art__leg watchtower-art__leg--right" />
-                <span className="watchtower-art__cross watchtower-art__cross--one" />
-                <span className="watchtower-art__cross watchtower-art__cross--two" />
+            <div className="watchtower-art">
+              <div className="watchtower-art__scene" aria-hidden="true">
+                <div className="watchtower-art__sun" />
+                <div className="watchtower-art__tower">
+                  <span className="watchtower-art__roof" />
+                  <span className="watchtower-art__room" />
+                  <span className="watchtower-art__leg watchtower-art__leg--left" />
+                  <span className="watchtower-art__leg watchtower-art__leg--right" />
+                  <span className="watchtower-art__cross watchtower-art__cross--one" />
+                  <span className="watchtower-art__cross watchtower-art__cross--two" />
+                </div>
               </div>
-              <p>{hero.artCaption}</p>
+              <p>
+                <PlaceholderFlag /> {hero.artCaption}
+              </p>
             </div>
           </div>
         </section>
@@ -86,7 +91,9 @@ function App() {
                 <p className="eyebrow">{trainingSection.eyebrow}</p>
                 <h2 id="training-title">{trainingSection.title}</h2>
               </div>
-              <p>{trainingSection.intro}</p>
+              <p>
+                <PlaceholderFlag /> {trainingSection.intro}
+              </p>
             </div>
 
             <div className="training-grid">
@@ -110,7 +117,9 @@ function App() {
             <div className="section-heading section-heading--inverse">
               <p className="eyebrow">{specialtySection.eyebrow}</p>
               <h2 id="specialty-title">{specialtySection.title}</h2>
-              <p>{specialtySection.intro}</p>
+              <p>
+                <PlaceholderFlag /> {specialtySection.intro}
+              </p>
             </div>
 
             <div className="specialty-grid">
@@ -119,6 +128,9 @@ function App() {
                   <p className="specialty-card__label">{course.audience}</p>
                   <h3>{course.title}</h3>
                   <p>{course.description}</p>
+                  <p className="card-placeholder">
+                    <PlaceholderFlag /> {specialtySection.placeholderLogistics}
+                  </p>
                   <a className="text-link" href="#contact">
                     {specialtySection.cardCtaLabel} <span aria-hidden="true">→</span>
                   </a>
@@ -170,8 +182,7 @@ function App() {
             >
               <span aria-hidden="true">{business.instructorInitials}</span>
               <p>
-                <span className="placeholder-flag">Placeholder</span>
-                {aboutSection.portraitCaption}
+                <PlaceholderFlag /> {aboutSection.portraitCaption}
               </p>
             </div>
 
@@ -179,12 +190,14 @@ function App() {
               <p className="eyebrow">{aboutSection.eyebrow}</p>
               <h2 id="about-title">{aboutSection.title}</h2>
               <p className="about-copy__lead">{aboutSection.lead}</p>
+              <p className="verification-note">
+                <PlaceholderFlag /> {aboutSection.verificationNote}
+              </p>
               <ul className="experience-list">
                 {experienceHighlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
                 ))}
               </ul>
-              <p className="verification-note">{aboutSection.verificationNote}</p>
             </div>
           </div>
         </section>
@@ -223,7 +236,7 @@ function App() {
                 <h3>{contactSection.booking.title}</h3>
                 <p>{contactSection.booking.description}</p>
                 <p className="placeholder-block">
-                  <span className="placeholder-flag">Placeholder</span>
+                  <PlaceholderFlag />
                   <span>
                     {business.squareBooking.label}: {business.squareBooking.displayUrl}.{' '}
                     {contactSection.booking.placeholderNote}

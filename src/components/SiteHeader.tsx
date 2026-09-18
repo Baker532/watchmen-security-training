@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import { business, headerCta, primaryNavigation } from '../data/siteContent'
+import { business, headerCta, primaryNavigation, prototypeNotice } from '../data/siteContent'
+import { PlaceholderFlag } from './PlaceholderFlag'
 
 const desktopQuery = '(min-width: 1101px)'
 
@@ -68,6 +69,10 @@ export function SiteHeader() {
       )}
 
       <header className="site-header" id="top">
+        <div className="poc-banner" role="note">
+          <PlaceholderFlag />
+          <span>{prototypeNotice.banner}</span>
+        </div>
         <div className="section-shell site-header__inner">
           <a
             className="brand"

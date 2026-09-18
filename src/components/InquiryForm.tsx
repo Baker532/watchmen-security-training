@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
 import { inquiryFormCopy, inquiryTopics } from '../data/siteContent'
+import { PlaceholderFlag } from './PlaceholderFlag'
 
 interface InquiryValues {
   name: string
@@ -252,7 +253,9 @@ export function InquiryForm() {
           <button className="button button--primary" type="submit">
             {inquiryFormCopy.submitLabel}
           </button>
-          <p className="form-note">{inquiryFormCopy.requiredNote}</p>
+          <p className="form-note">
+            <PlaceholderFlag /> {inquiryFormCopy.requiredNote}
+          </p>
         </div>
 
         {status.kind !== 'idle' && (
