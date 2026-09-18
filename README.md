@@ -30,20 +30,24 @@ Launch blockers are listed in the site footer and in `src/data/siteContent.ts`.
 
 ## GitHub Pages preview
 
-Production preview URL:
+The production build uses a relative Vite `base` (`./`) so it can run from GitHub Pages, the `gh-pages` branch, or a CDN. Local `npm run dev` stays at `http://localhost:5173/`.
+
+Making the repository public is required for free Pages, but it does **not** create the Pages site. `GITHUB_TOKEN` cannot enable Pages. Until a repo admin completes the click below, share the `gh-pages` CDN preview.
+
+**Shareable preview (no Settings click):**
+
+https://raw.githack.com/Baker532/watchmen-security-training/gh-pages/index.html
+
+**GitHub Pages URL (after enablement):**
 
 https://baker532.github.io/watchmen-security-training/
 
-The Vite `base` is `/watchmen-security-training/`. Local `npm run dev` is therefore at `http://localhost:5173/watchmen-security-training/`.
+A GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) runs `npm ci`, `npm run build`, copies `dist/index.html` to `dist/404.html` for SPA fallback, publishes the `gh-pages` branch, and attempts `actions/deploy-pages`.
 
-A GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) runs `npm ci`, `npm run build`, copies `dist/index.html` to `dist/404.html` for SPA fallback, and deploys with `actions/deploy-pages`.
-
-If the site is not live yet, Matt needs to enable Pages (this cannot be done from the agent token):
+To turn on the github.io URL (one click, then re-run is optional because the next push deploys):
 
 1. Open **https://github.com/Baker532/watchmen-security-training/settings/pages**
 2. Under **Build and deployment → Source**, choose **GitHub Actions**
-3. If GitHub says Pages is unavailable, either make the repository **public** or use a plan that includes Pages on private repos (GitHub Pro / Team)
-4. Open **https://github.com/Baker532/watchmen-security-training/actions/workflows/deploy-pages.yml** and **Re-run** the failed **Deploy GitHub Pages** job (or **Run workflow**)
-5. After a green run, open **https://baker532.github.io/watchmen-security-training/**
+3. After a green **Deploy to GitHub Pages** step, open **https://baker532.github.io/watchmen-security-training/**
 
 See `docs/CURSOR_AGENT_ROADMAP.md` for the remaining production milestones after verified client facts are available.

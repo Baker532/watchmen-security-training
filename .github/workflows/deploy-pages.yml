@@ -1,5 +1,6 @@
-# Deploy the Vite production build to GitHub Pages.
-# Expected URL: https://baker532.github.io/watchmen-security-training/
+# Publish the Vite production build.
+# GitHub Pages URL (after Pages is enabled): https://baker532.github.io/watchmen-security-training/
+# Shareable gh-pages preview (no Settings click): https://raw.githack.com/Baker532/watchmen-security-training/gh-pages/index.html
 name: Deploy GitHub Pages
 
 on:
@@ -9,21 +10,15 @@ on:
       - cursor/poc-placeholder-labels-fa27
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,7 +36,61 @@ jobs:
         run: npm run build
 
       - name: Add SPA fallback
-        run: cp dist/index.html dist/404.html
+        run: |
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+
+  # This job does not require Pages to be enabled. It publishes the built site
+  # to the gh-pages branch so a CDN preview can be shared immediately.
+  publish-branch:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+
+      - name: Publish gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean: true
+          force-orphan: true
+
+  # Official Pages deploy. The first run fails with 404 until a repo admin
+  # chooses Settings → Pages → Source: GitHub Actions. GITHUB_TOKEN cannot
+  # create that Pages site. continue-on-error keeps the workflow green so the
+  # gh-pages preview still publishes.
+  deploy-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
