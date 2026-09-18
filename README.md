@@ -30,7 +30,11 @@ Launch blockers are listed in the site footer and in `src/data/siteContent.ts`.
 
 ## Cloudflare Workers preview
 
-The production build uses Vite `base` `/` so assets load on a public `*.workers.dev` URL.
+Live POC URL:
+
+https://watchmen-poc.spicy-air.workers.dev/
+
+The production build uses Vite `base` `/` so assets load on that public `*.workers.dev` host.
 
 ```powershell
 npm run deploy
@@ -38,7 +42,7 @@ npm run deploy
 
 That runs `npm run build` then `npx wrangler deploy`. Wrangler reads `wrangler.toml` and serves `dist` as static assets.
 
-Durable deploys need Matt's Cloudflare account (`CLOUDFLARE_API_TOKEN` with Workers edit plus `CLOUDFLARE_ACCOUNT_ID`). Without those, `npx wrangler deploy --temporary` publishes a claimable preview.
+This first deploy used a temporary Cloudflare preview account. Claim it onto Matt's Cloudflare account within 60 minutes, or re-deploy with `CLOUDFLARE_API_TOKEN` (Workers edit) and `CLOUDFLARE_ACCOUNT_ID` for a durable worker.
 
 ## GitHub Pages preview
 
