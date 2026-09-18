@@ -32,7 +32,7 @@ Launch blockers are listed in the site footer and in `src/data/siteContent.ts`.
 
 Live POC URL:
 
-https://watchmen-poc.spicy-air.workers.dev/
+https://watchmen-poc.sunset-poet-936.workers.dev/
 
 The production build uses Vite `base` `/` so assets load on that public `*.workers.dev` host.
 
