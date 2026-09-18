@@ -1,6 +1,6 @@
-# Publish the Vite production build.
-# GitHub Pages URL (after Pages is enabled): https://baker532.github.io/watchmen-security-training/
-# Shareable gh-pages preview (no Settings click): https://raw.githack.com/Baker532/watchmen-security-training/gh-pages/index.html
+# Publish the Vite production build to the gh-pages branch.
+# Shareable preview: https://raw.githack.com/Baker532/watchmen-security-training/gh-pages/index.html
+# GitHub Pages URL (after enabling Deploy from a branch): https://baker532.github.io/watchmen-security-training/
 name: Deploy GitHub Pages
 
 on:
@@ -46,8 +46,8 @@ jobs:
           name: site
           path: dist
 
-  # This job does not require Pages to be enabled. It publishes the built site
-  # to the gh-pages branch so a CDN preview can be shared immediately.
+  # Publishes the built site to the gh-pages branch. This does not require
+  # GitHub Pages to be enabled. GITHUB_TOKEN cannot create a Pages site.
   publish-branch:
     needs: build
     runs-on: ubuntu-latest
@@ -70,36 +70,3 @@ jobs:
           branch: gh-pages
           clean: true
           force-orphan: true
-
-  # Official Pages deploy. The first run fails with 404 until a repo admin
-  # chooses Settings → Pages → Source: GitHub Actions. GITHUB_TOKEN cannot
-  # create that Pages site. continue-on-error keeps the workflow green so the
-  # gh-pages preview still publishes.
-  deploy-pages:
-    needs: build
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Download site
-        uses: actions/download-artifact@v4
-        with:
-          name: site
-          path: dist
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: dist
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
