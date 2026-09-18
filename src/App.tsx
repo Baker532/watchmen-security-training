@@ -9,7 +9,6 @@ import {
   business,
   contactSection,
   coreTraining,
-  experienceHighlights,
   hero,
   organizationSection,
   serviceAreaSection,
@@ -190,14 +189,7 @@ function App() {
               <p className="eyebrow">{aboutSection.eyebrow}</p>
               <h2 id="about-title">{aboutSection.title}</h2>
               <p className="about-copy__lead">{aboutSection.lead}</p>
-              <p className="verification-note">
-                <PlaceholderFlag /> {aboutSection.verificationNote}
-              </p>
-              <ul className="experience-list">
-                {experienceHighlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
+              <p className="about-copy__body">{aboutSection.body}</p>
             </div>
           </div>
         </section>

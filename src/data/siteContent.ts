@@ -203,21 +203,11 @@ export const organizationSection = {
 
 export const aboutSection = {
   eyebrow: 'Meet the instructor',
-  title: 'Experience grounded in public service and instruction.',
-  lead: `${business.instructorName}’s supplied résumé describes more than three decades of law-enforcement experience and extensive work in firearms instruction, field training, organizational readiness, and security education.`,
-  verificationNote:
-    'Provisional notes from a supplied résumé. Credential names, dates, agency references, and publication permissions must be confirmed before launch. No endorsement by any current or former law-enforcement agency is expressed or implied.',
+  title: 'Instruction grounded in safety and public service.',
+  lead: `${business.instructorName} leads Watchmen Security and Training for responsible students along the Alabama Gulf Coast and Northwest Florida.`,
+  body: 'His classes emphasize safe handling, sound judgment, and practical skills that transfer off the range. Instruction is offered in a calm, structured setting for individuals, families, and organizations who want to be better prepared without a culture of aggression.',
   portraitCaption: 'Instructor portrait pending approved image and usage rights.',
 } as const
-
-export const experienceHighlights = [
-  'Law-enforcement service beginning in 1993',
-  'Handgun, rifle, and shotgun instruction experience',
-  'Active-shooter preparedness instruction',
-  'Field training and team leadership experience',
-  'Hostage negotiation and peer-support experience',
-  'Firearms armorer and pistol-optic training experience',
-] as const
 
 export const serviceAreaSection = {
   eyebrow: 'Local service area',
