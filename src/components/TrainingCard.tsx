@@ -1,5 +1,6 @@
 import type { TrainingPath } from '../data/siteContent'
 import { trainingSection } from '../data/siteContent'
+import { PlaceholderFlag } from './PlaceholderFlag'
 
 interface TrainingCardProps {
   course: TrainingPath
@@ -17,6 +18,9 @@ export function TrainingCard({ course, number }: TrainingCardProps) {
           <li key={focusArea}>{focusArea}</li>
         ))}
       </ul>
+      <p className="card-placeholder">
+        <PlaceholderFlag /> {trainingSection.placeholderLogistics}
+      </p>
       <a className="text-link text-link--canvas" href="#contact">
         {trainingSection.cardCtaLabel} <span aria-hidden="true">→</span>
       </a>

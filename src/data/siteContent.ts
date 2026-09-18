@@ -94,7 +94,12 @@ export const hero = {
   primaryCta: { href: '#training', label: 'Explore training' } satisfies ContentLink,
   secondaryCta: { href: '#contact', label: 'Start an inquiry' } satisfies ContentLink,
   principles: ['Beginner welcoming', 'Scenario informed', 'Safety centered'],
-  artCaption: 'Awareness before action',
+  artCaption: 'Decorative mark only. Approved photography pending usage rights.',
+} as const
+
+export const prototypeNotice = {
+  banner:
+    'Proof of concept. Missing facts and assets are labeled [Placeholder]. This site does not book, charge, or send inquiries.',
 } as const
 
 export const trustStrip = [
@@ -107,7 +112,9 @@ export const trainingSection = {
   eyebrow: 'Core training paths',
   title: 'Build capability from a sound foundation.',
   intro:
-    'Each path emphasizes safe handling, repeatable fundamentals, and sound judgment. Final course lengths, prerequisites, and pricing will be published after client approval.',
+    'Each path emphasizes safe handling, repeatable fundamentals, and sound judgment. Course names here are directional prototype copy.',
+  placeholderLogistics:
+    'Duration, price, prerequisites, equipment, and schedule pending approval.',
   cardCtaLabel: 'Ask about this path',
 } as const
 
@@ -137,6 +144,8 @@ export const specialtySection = {
   title: 'Training shaped around real needs.',
   intro:
     'Focused options help students close a specific skills gap or learn in a more personal setting.',
+  placeholderLogistics:
+    'Duration, price, prerequisites, equipment, and schedule pending approval.',
   cardCtaLabel: 'Ask about this option',
 } as const
 
@@ -197,8 +206,8 @@ export const aboutSection = {
   title: 'Experience grounded in public service and instruction.',
   lead: `${business.instructorName}’s supplied résumé describes more than three decades of law-enforcement experience and extensive work in firearms instruction, field training, organizational readiness, and security education.`,
   verificationNote:
-    'Credential names, dates, agency references, and publication permissions must be confirmed before launch. No endorsement by any current or former law-enforcement agency is expressed or implied.',
-  portraitCaption: 'Instructor portrait pending approved image and usage rights',
+    'Provisional notes from a supplied résumé. Credential names, dates, agency references, and publication permissions must be confirmed before launch. No endorsement by any current or former law-enforcement agency is expressed or implied.',
+  portraitCaption: 'Instructor portrait pending approved image and usage rights.',
 } as const
 
 export const experienceHighlights = [
@@ -267,7 +276,7 @@ export const inquiryTopics = [
 export const footerContent = {
   legal:
     'Training and consulting information is educational and is not legal advice. Participation is subject to eligibility, safety requirements, instructor approval, and range policies. No endorsement by any current or former law-enforcement agency is expressed or implied.',
-  prototypeNote: 'Prototype content. Not a live booking, payment, or inquiry service.',
+  prototypeNote: 'Proof of concept. Not a live booking, payment, or inquiry service.',
   blockersTitle: 'Launch blockers',
   blockersIntro:
     'These items remain placeholders until the client supplies verified facts, approvals, and production services.',

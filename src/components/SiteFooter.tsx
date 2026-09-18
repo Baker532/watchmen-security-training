@@ -4,6 +4,7 @@ import {
   footerNavigation,
   launchBlockers,
 } from '../data/siteContent'
+import { PlaceholderFlag } from './PlaceholderFlag'
 
 export function SiteFooter() {
   const year = new Date().getFullYear()
@@ -41,11 +42,11 @@ export function SiteFooter() {
           <p className="booking-panel__label">Public contact</p>
           <ul className="placeholder-list">
             <li>
-              <span className="placeholder-flag">Placeholder</span>
+              <PlaceholderFlag />
               {business.contact.email.placeholder}
             </li>
             <li>
-              <span className="placeholder-flag">Placeholder</span>
+              <PlaceholderFlag />
               {business.contact.phone.placeholder}
             </li>
           </ul>

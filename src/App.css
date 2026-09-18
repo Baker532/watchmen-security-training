@@ -23,6 +23,17 @@
   margin-inline: auto;
 }
 
+#training,
+#specialty,
+#organizations,
+#about,
+#service-area,
+#contact,
+#inquiry-form,
+#square-booking-placeholder {
+  scroll-margin-top: 0.35rem;
+}
+
 .eyebrow {
   margin: 0 0 1rem;
   color: var(--brass-dark);
@@ -96,11 +107,31 @@
   backdrop-filter: blur(14px);
 }
 
+.poc-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.7rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgb(174 143 82 / 28%);
+  background: var(--olive-dark);
+  color: var(--muted-light);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.poc-banner .placeholder-flag {
+  margin-right: 0;
+  color: #f3ddaa;
+}
+
 .nav-backdrop {
   position: fixed;
   inset: 0;
   z-index: 40;
-  background: rgb(9 11 9 / 55%);
+  background: rgb(9 11 9 / 78%);
   cursor: pointer;
 }
 
@@ -276,6 +307,11 @@
   background-size: 2.5rem 2.5rem;
 }
 
+.watchtower-art__scene {
+  position: absolute;
+  inset: 0;
+}
+
 .watchtower-art__sun {
   position: absolute;
   top: 3.5rem;
@@ -382,14 +418,25 @@
 
 .watchtower-art > p {
   position: absolute;
-  right: 1.25rem;
+  right: 1rem;
   bottom: 1rem;
+  left: 1rem;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
   margin: 0;
   color: var(--muted-light);
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+.watchtower-art > p .placeholder-flag {
+  margin-right: 0;
+  color: #f3ddaa;
 }
 
 .trust-strip {
@@ -465,6 +512,14 @@
   margin: 0;
   color: var(--muted);
   line-height: 1.75;
+}
+
+.section-heading--split > p,
+.section-heading--inverse > p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
 }
 
 .training-grid {
@@ -610,13 +665,33 @@
 }
 
 .text-link--canvas {
-  margin-top: auto;
-  padding-top: 1.5rem;
+  margin-top: 0.85rem;
+  padding-top: 0;
   color: var(--brass-dark);
 }
 
 .text-link--canvas:hover {
   color: var(--ink);
+}
+
+.card-placeholder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: baseline;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.training-card .card-placeholder {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+.specialty-card .card-placeholder {
+  color: var(--muted-light);
 }
 
 .specialty-card .text-link {
@@ -674,7 +749,7 @@
   text-align: center;
 }
 
-.portrait-placeholder span {
+.portrait-placeholder > span {
   color: var(--olive);
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(4rem, 9vw, 7rem);
@@ -700,11 +775,22 @@
   line-height: 1.8;
 }
 
+.verification-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
 .experience-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
-  margin: 2rem 0 0;
+  margin: 1.25rem 0 0;
   padding: 0;
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
@@ -718,13 +804,6 @@
   color: var(--ink-soft);
   font-size: 0.83rem;
   font-weight: 750;
-}
-
-.verification-note {
-  margin: 1rem 0 0;
-  color: var(--muted);
-  font-size: 0.76rem;
-  line-height: 1.55;
 }
 
 .service-area {
@@ -920,8 +999,10 @@
 }
 
 .form-actions .button {
+  flex-shrink: 0;
   border: 0;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .form-note,
@@ -936,6 +1017,13 @@
 .form-note,
 .field-hint {
   color: var(--muted);
+}
+
+.form-note {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: baseline;
 }
 
 .field-error {
@@ -1120,9 +1208,10 @@
     align-items: stretch;
     flex-direction: column;
     gap: 0;
-    padding: 0.75rem 1rem 1rem;
+    padding: 0.75rem 1rem 1.25rem;
     border-bottom: 1px solid rgb(245 240 228 / 18%);
     background: var(--ink);
+    box-shadow: 0 1.5rem 2.5rem rgb(0 0 0 / 55%);
   }
 
   .site-nav--open {
