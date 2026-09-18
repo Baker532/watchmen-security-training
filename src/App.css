@@ -31,7 +31,7 @@
 #contact,
 #inquiry-form,
 #square-booking-placeholder {
-  scroll-margin-top: 7rem;
+  scroll-margin-top: 0.35rem;
 }
 
 .eyebrow {
@@ -685,7 +685,7 @@
   text-align: center;
 }
 
-.portrait-placeholder span {
+.portrait-placeholder > span {
   color: var(--olive);
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(4rem, 9vw, 7rem);
@@ -698,10 +698,11 @@
   gap: 0.75rem;
   margin: 1rem 0 0;
   color: var(--muted);
-  font-size: 0.66rem;
-  font-weight: 850;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-transform: none;
 }
 
 .about-copy__lead {
