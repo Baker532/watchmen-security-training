@@ -28,4 +28,21 @@ This is a proof of concept, not a production launch. Missing facts and assets ar
 
 Launch blockers are listed in the site footer and in `src/data/siteContent.ts`.
 
+## GitHub Pages preview
+
+Production preview URL:
+
+https://baker532.github.io/watchmen-security-training/
+
+The Vite `base` is `/watchmen-security-training/`. Local `npm run dev` is therefore at `http://localhost:5173/watchmen-security-training/`.
+
+A GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) runs `npm ci`, `npm run build`, copies `dist/index.html` to `dist/404.html` for SPA fallback, and deploys with `actions/deploy-pages`.
+
+If the site is not live yet, in the GitHub repo:
+
+1. **Settings → Pages**
+2. Under **Build and deployment → Source**, choose **GitHub Actions**
+3. If prompted, allow Actions and the `github-pages` environment
+4. Open **Actions**, select **Deploy GitHub Pages**, and confirm the latest run is green
+
 See `docs/CURSOR_AGENT_ROADMAP.md` for the remaining production milestones after verified client facts are available.
