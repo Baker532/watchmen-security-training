@@ -1,12 +1,21 @@
 import './App.css'
 import { InquiryForm } from './components/InquiryForm'
+import { SiteFooter } from './components/SiteFooter'
 import { SiteHeader } from './components/SiteHeader'
 import { TrainingCard } from './components/TrainingCard'
 import {
+  aboutSection,
   business,
+  contactSection,
   coreTraining,
   experienceHighlights,
+  hero,
+  organizationSection,
+  serviceAreaSection,
+  specialtySection,
   specialtyTraining,
+  trainingSection,
+  trustStrip,
 } from './data/siteContent'
 
 function App() {
@@ -22,25 +31,21 @@ function App() {
         <section className="hero-section" aria-labelledby="hero-title">
           <div className="section-shell hero-layout">
             <div className="hero-copy">
-              <p className="eyebrow">Safety-led firearms training</p>
-              <h1 id="hero-title">Prepared people make safer decisions.</h1>
-              <p className="hero-lede">
-                Practical instruction and security consulting for responsible
-                individuals, families, businesses, and community organizations
-                across the Alabama Gulf Coast and Northwest Florida.
-              </p>
+              <p className="eyebrow">{hero.eyebrow}</p>
+              <h1 id="hero-title">{hero.title}</h1>
+              <p className="hero-lede">{hero.lede}</p>
               <div className="hero-actions" aria-label="Primary actions">
-                <a className="button button--primary" href="#training">
-                  Explore training
+                <a className="button button--primary" href={hero.primaryCta.href}>
+                  {hero.primaryCta.label}
                 </a>
-                <a className="button button--secondary" href="#contact">
-                  Start an inquiry
+                <a className="button button--secondary" href={hero.secondaryCta.href}>
+                  {hero.secondaryCta.label}
                 </a>
               </div>
               <ul className="hero-points" aria-label="Training principles">
-                <li>Beginner welcoming</li>
-                <li>Scenario informed</li>
-                <li>Safety centered</li>
+                {hero.principles.map((principle) => (
+                  <li key={principle}>{principle}</li>
+                ))}
               </ul>
             </div>
 
@@ -54,40 +59,34 @@ function App() {
                 <span className="watchtower-art__cross watchtower-art__cross--one" />
                 <span className="watchtower-art__cross watchtower-art__cross--two" />
               </div>
-              <p>Awareness before action</p>
+              <p>{hero.artCaption}</p>
             </div>
           </div>
         </section>
 
         <section className="trust-strip" aria-label="Service summary">
           <div className="section-shell trust-strip__grid">
-            <p>
-              <strong>Serving</strong>
-              <span>Coastal Alabama + Northwest Florida</span>
-            </p>
-            <p>
-              <strong>Approach</strong>
-              <span>Clear, calm, practical instruction</span>
-            </p>
-            <p>
-              <strong>Formats</strong>
-              <span>Individual, private + organizational</span>
-            </p>
+            {trustStrip.map((item) => (
+              <p key={item.label}>
+                <strong>{item.label}</strong>
+                <span>{item.value}</span>
+              </p>
+            ))}
           </div>
         </section>
 
-        <section className="section section--canvas" id="training" aria-labelledby="training-title">
+        <section
+          className="section section--canvas"
+          id="training"
+          aria-labelledby="training-title"
+        >
           <div className="section-shell">
             <div className="section-heading section-heading--split">
               <div>
-                <p className="eyebrow">Core training paths</p>
-                <h2 id="training-title">Build capability from a sound foundation.</h2>
+                <p className="eyebrow">{trainingSection.eyebrow}</p>
+                <h2 id="training-title">{trainingSection.title}</h2>
               </div>
-              <p>
-                Each path emphasizes safe handling, repeatable fundamentals,
-                and sound judgment. Final course lengths, prerequisites, and
-                pricing will be published after client approval.
-              </p>
+              <p>{trainingSection.intro}</p>
             </div>
 
             <div className="training-grid">
@@ -102,15 +101,16 @@ function App() {
           </div>
         </section>
 
-        <section className="section section--dark" aria-labelledby="specialty-title">
+        <section
+          className="section section--dark"
+          id="specialty"
+          aria-labelledby="specialty-title"
+        >
           <div className="section-shell">
             <div className="section-heading section-heading--inverse">
-              <p className="eyebrow">Specialty and private instruction</p>
-              <h2 id="specialty-title">Training shaped around real needs.</h2>
-              <p>
-                Focused options help students close a specific skills gap or
-                learn in a more personal setting.
-              </p>
+              <p className="eyebrow">{specialtySection.eyebrow}</p>
+              <h2 id="specialty-title">{specialtySection.title}</h2>
+              <p>{specialtySection.intro}</p>
             </div>
 
             <div className="specialty-grid">
@@ -119,90 +119,87 @@ function App() {
                   <p className="specialty-card__label">{course.audience}</p>
                   <h3>{course.title}</h3>
                   <p>{course.description}</p>
+                  <a className="text-link" href="#contact">
+                    {specialtySection.cardCtaLabel} <span aria-hidden="true">→</span>
+                  </a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section section--olive" id="organizations" aria-labelledby="organizations-title">
+        <section
+          className="section section--olive"
+          id="organizations"
+          aria-labelledby="organizations-title"
+        >
           <div className="section-shell organization-layout">
             <div className="organization-copy">
-              <p className="eyebrow">Organizational readiness</p>
-              <h2 id="organizations-title">A clearer plan before an emergency.</h2>
-              <p>
-                Scenario-aware education and security consulting can help a
-                team understand responsibilities, identify vulnerabilities,
-                and make measured improvements without creating a culture of
-                fear.
-              </p>
-              <a className="text-link" href="#contact">
-                Discuss your organization <span aria-hidden="true">→</span>
+              <p className="eyebrow">{organizationSection.eyebrow}</p>
+              <h2 id="organizations-title">{organizationSection.title}</h2>
+              <p>{organizationSection.intro}</p>
+              <a className="text-link" href={organizationSection.cta.href}>
+                {organizationSection.cta.label} <span aria-hidden="true">→</span>
               </a>
             </div>
 
             <div className="organization-services">
-              <article>
-                <p className="service-number">01</p>
-                <div>
-                  <h3>Active-shooter preparedness</h3>
-                  <p>
-                    Educational sessions for businesses, schools, and faith
-                    communities focused on awareness, communication, and
-                    response planning.
-                  </p>
-                </div>
-              </article>
-              <article>
-                <p className="service-number">02</p>
-                <div>
-                  <h3>Security consulting</h3>
-                  <p>
-                    Practical reviews of procedures, team roles, and physical
-                    considerations, followed by prioritized recommendations.
-                  </p>
-                </div>
-              </article>
+              {organizationSection.services.map((service) => (
+                <article key={service.number}>
+                  <p className="service-number">{service.number}</p>
+                  <div>
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
 
-        <section className="section section--canvas" id="about" aria-labelledby="about-title">
+        <section
+          className="section section--canvas"
+          id="about"
+          aria-labelledby="about-title"
+        >
           <div className="section-shell about-layout">
-            <div className="portrait-placeholder" aria-label="Instructor portrait placeholder">
-              <span>DMB</span>
-              <p>Instructor portrait pending</p>
+            <div
+              className="portrait-placeholder"
+              role="img"
+              aria-label={aboutSection.portraitCaption}
+            >
+              <span aria-hidden="true">{business.instructorInitials}</span>
+              <p>
+                <span className="placeholder-flag">Placeholder</span>
+                {aboutSection.portraitCaption}
+              </p>
             </div>
 
             <div className="about-copy">
-              <p className="eyebrow">Meet the instructor</p>
-              <h2 id="about-title">Experience grounded in public service and instruction.</h2>
-              <p className="about-copy__lead">
-                Darren Baker’s supplied résumé describes more than three
-                decades of law-enforcement experience and extensive work in
-                firearms instruction, field training, organizational readiness,
-                and security education.
-              </p>
+              <p className="eyebrow">{aboutSection.eyebrow}</p>
+              <h2 id="about-title">{aboutSection.title}</h2>
+              <p className="about-copy__lead">{aboutSection.lead}</p>
               <ul className="experience-list">
                 {experienceHighlights.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
                 ))}
               </ul>
-              <p className="verification-note">
-                Credential names, dates, agency references, and publication
-                permissions must be confirmed before launch.
-              </p>
+              <p className="verification-note">{aboutSection.verificationNote}</p>
             </div>
           </div>
         </section>
 
-        <section className="section service-area" id="service-area" aria-labelledby="service-area-title">
+        <section
+          className="section service-area"
+          id="service-area"
+          aria-labelledby="service-area-title"
+        >
           <div className="section-shell service-area__layout">
             <div>
-              <p className="eyebrow">Local service area</p>
-              <h2 id="service-area-title">Training close to the Gulf Coast community.</h2>
+              <p className="eyebrow">{serviceAreaSection.eyebrow}</p>
+              <h2 id="service-area-title">{serviceAreaSection.title}</h2>
             </div>
-            <ul aria-label="Primary service locations">
+            <ul aria-label={serviceAreaSection.listLabel}>
               {business.serviceAreas.map((area) => (
                 <li key={area}>{area}</li>
               ))}
@@ -210,26 +207,33 @@ function App() {
           </div>
         </section>
 
-        <section className="section section--contact" id="contact" aria-labelledby="contact-title">
+        <section
+          className="section section--contact"
+          id="contact"
+          aria-labelledby="contact-title"
+        >
           <div className="section-shell contact-layout">
             <div className="contact-copy">
-              <p className="eyebrow">Start a conversation</p>
-              <h2 id="contact-title">Tell us what you want to be better prepared for.</h2>
-              <p>
-                Share your goals, experience level, and preferred training
-                format. This prototype validates the inquiry locally; the final
-                site will connect the form and verified Square booking link.
-              </p>
+              <p className="eyebrow">{contactSection.eyebrow}</p>
+              <h2 id="contact-title">{contactSection.title}</h2>
+              <p>{contactSection.intro}</p>
 
-              <div className="booking-panel">
-                <p className="booking-panel__label">Ready to book?</p>
-                <h3>Square booking and payment</h3>
-                <p>
-                  A secure Square-hosted link will handle scheduling, deposits,
-                  and payments after course details are approved.
+              <div className="booking-panel" id="square-booking-placeholder">
+                <p className="booking-panel__label">{contactSection.booking.label}</p>
+                <h3>{contactSection.booking.title}</h3>
+                <p>{contactSection.booking.description}</p>
+                <p className="placeholder-block">
+                  <span className="placeholder-flag">Placeholder</span>
+                  <span>
+                    {business.squareBooking.label}: {business.squareBooking.displayUrl}.{' '}
+                    {contactSection.booking.placeholderNote}
+                  </span>
                 </p>
-                <a className="button button--secondary" href="#inquiry-form">
-                  Ask about availability
+                <a
+                  className="button button--secondary"
+                  href={contactSection.booking.inquiryCta.href}
+                >
+                  {contactSection.booking.inquiryCta.label}
                 </a>
               </div>
             </div>
@@ -239,36 +243,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="site-footer">
-        <div className="section-shell site-footer__top">
-          <div>
-            <a className="brand brand--footer" href="#top" aria-label={`${business.name} home`}>
-              <span className="brand__mark" aria-hidden="true">W</span>
-              <span className="brand__text">
-                <strong>Watchmen</strong>
-                <small>Security &amp; Training</small>
-              </span>
-            </a>
-            <p>{business.tagline}</p>
-          </div>
-          <nav aria-label="Footer navigation">
-            <a href="#training">Training</a>
-            <a href="#organizations">Organizations</a>
-            <a href="#about">Instructor</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </div>
-
-        <div className="section-shell site-footer__legal">
-          <p>
-            Training and consulting information is educational and is not legal
-            advice. Participation is subject to eligibility, safety requirements,
-            instructor approval, and range policies. No endorsement by any current
-            or former law-enforcement agency is expressed or implied.
-          </p>
-          <p>© {new Date().getFullYear()} {business.name}. Prototype content.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   )
 }
