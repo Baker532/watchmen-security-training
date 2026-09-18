@@ -4,9 +4,9 @@ This roadmap keeps the prototype moving while Kevin remains the developer making
 
 ## Current prototype
 
-The repository now contains a responsive one-page marketing prototype with typed content, reusable React components, a mobile menu, locally validated inquiry form, metadata, service-area content, and provisional instructor content.
+The repository contains a complete one-page marketing prototype: typed content, reusable React components, a mobile menu, locally validated inquiry form with honest status messaging, metadata, service-area content, and clearly labeled placeholders for unverified facts.
 
-Production gaps are deliberately visible: verified contact information, a Square URL, a real form endpoint, approved photography, final course details, and verified credential wording.
+This is not a production launch. Verified contact information, a Square URL, a real form endpoint, approved photography, final course details, and verified credential wording remain launch blockers.
 
 ## Agent operating pattern
 
