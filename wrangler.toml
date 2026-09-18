@@ -1,0 +1,9 @@
+name = "watchmen-poc"
+compatibility_date = "2026-09-18"
+workers_dev = true
+
+# Serve the Vite production build. This is a hash-anchor SPA; unknown
+# paths still get index.html so a refresh on a deep link does not 404.
+[assets]
+directory = "./dist"
+not_found_handling = "single-page-application"

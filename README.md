@@ -28,9 +28,21 @@ This is a proof of concept, not a production launch. Missing facts and assets ar
 
 Launch blockers are listed in the site footer and in `src/data/siteContent.ts`.
 
+## Cloudflare Workers preview
+
+The production build uses Vite `base` `/` so assets load on a public `*.workers.dev` URL.
+
+```powershell
+npm run deploy
+```
+
+That runs `npm run build` then `npx wrangler deploy`. Wrangler reads `wrangler.toml` and serves `dist` as static assets.
+
+Durable deploys need Matt's Cloudflare account (`CLOUDFLARE_API_TOKEN` with Workers edit plus `CLOUDFLARE_ACCOUNT_ID`). Without those, `npx wrangler deploy --temporary` publishes a claimable preview.
+
 ## GitHub Pages preview
 
-The production build uses a relative Vite `base` (`./`) so it can run from GitHub Pages, the `gh-pages` branch, or a CDN. Local `npm run dev` stays at `http://localhost:5173/`.
+Local `npm run dev` stays at `http://localhost:5173/`.
 
 Making the repository public is required for free Pages, but it does **not** create the Pages site. `GITHUB_TOKEN` cannot enable Pages.
 
